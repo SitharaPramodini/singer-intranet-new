@@ -56,7 +56,7 @@ const SpecialEvents = () => {
                             className="card flex items-center p-4 text-base font-semibold text-gray-900 rounded-lg bg-white hover:shadow-xl w-full"
                         >
                             {event.icon}
-                            <span className="flex-1 ms-8 whitespace-nowrap">{event.title}</span>
+                            <span className="flex-1 ms-8 whitespace-nowrap text-left">{event.title}</span>
                             <span className="px-4 py-[4px] bg-red-100 hover:bg-red-600 hover:text-white rounded-full text-red-700 text-xs font-medium transition-colors duration-200">
                                 {event.count}
                             </span>
