@@ -93,7 +93,7 @@ const EmpOfMonths = () => {
               {/* Employee Details */}
               <div className="py-6 pl-6  text-left w-2/3">
                 <h3 className="text-lg font-semibold ">{employee.name}</h3>
-                <p className='py-2 text-sm'>{employee.description}</p>
+                <p className='py-2 pr-6 text-sm'>{employee.description}</p>
                 <p className="text-gray-600">
                   <span className="font-medium">Branch:</span> {employee.branch}
                 </p>
