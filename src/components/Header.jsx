@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className="relative w-full">
             <nav className="absolute top-0 left-0 w-full bg-transparent z-10 mt-2">
-                <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-3">
+                <div className=" flex flex-wrap items-center justify-between mx-auto px-3">
                     <a href="https://singer.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
                         {/* <img src="logo1.png" className="h-14" alt="singer Logo" /> */}
                     </a>
