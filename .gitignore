@@ -13,11 +13,6 @@ dist-ssr
 *.local
 
 
-.env
-postcss.config.js
-postcss.config.cjs
-prettier.config.cjs
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
