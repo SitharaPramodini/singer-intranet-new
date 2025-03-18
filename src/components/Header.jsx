@@ -33,9 +33,9 @@ const Header = () => {
 
             <img src="banner.png" className="w-full" alt="banner" />
 
-            <button type="button" className="absolute ml-[3%] w-[16%] top-2 left-2 text-white rounded-full shadow-md hover:shadow-xl bg-[#eb1c24] hover:bg-[#551515] py-1 px-4 font-medium text-base transition-colors duration-200 z-10">
-  Singer සත්කාර
-</button>
+            <button type="button" className="absolute ml-[3%] w-[16%] top-6 left-2 text-white rounded-full shadow-md hover:shadow-xl bg-[#eb1c24] hover:bg-[#551515] py-1 px-4 font-medium text-base transition-colors duration-200 z-10">
+                Singer සත්කාර
+            </button>
 
 
             <button type="button" className="blinking-button absolute bottom-4 right-4 text-[#eb1c24] hover:text-white hover:bg-[#eb1c24] rounded-full bg-white py-1 px-6 font-medium text-lg transition-colors duration-200 z-10">

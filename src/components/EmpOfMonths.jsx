@@ -5,28 +5,28 @@ const EmpOfMonths = () => {
   const employees = [
     {
       id: 1,
-      name: "Priya Sharma",
+      name: "Sithara Pramodini",
       branch: "Colombo Central",
       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
       image: "emp.jpg"
     },
     {
       id: 2,
-      name: "Amal Fernando",
+      name: "Sewmini Samarasinghe",
       branch: "Kandy Main",
       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
       image: "emp.jpg"
     },
     {
       id: 3,
-      name: "Nimal Perera",
+      name: "Sandeepa Sewmini",
       branch: "Galle Branch",
       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
       image: "emp.jpg"
     },
     {
       id: 4,
-      name: "Kumari Jayawardena",
+      name: "Sanduni Rajapakse",
       branch: "Negombo Branch",
       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
       image: "emp.jpg"
@@ -58,8 +58,8 @@ const EmpOfMonths = () => {
   };
 
   return (
-    <div className="relative w-full bg-white border border-gray-200 rounded-lg shadow-sm">
-    {/* Left Arrow */}
+<div className="relative w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl hover:scale-[101%] transition-all duration-300 ease-in-out">
+{/* Left Arrow */}
     {/* <h5 class="text-xl font-bold leading-none text-[#eb1c24] px-4 py-3">Employee of The Month</h5> */}
 
     <button 

@@ -7,6 +7,7 @@ import Documents from '../components/Documents'
 import SpecialEvents from '../components/SpecialEvents'
 import NewJoinees from '../components/NewJoinees'
 import Promotions from '../components/Promotions'
+import Footer from '../components/Footer'
 
 const Home = () => {
     return (
@@ -30,7 +31,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='flex flex-row w-full px-6 gap-x-4 '>
+            <div className='flex flex-row w-full px-6 gap-x-4 pb-6'>
                 <div className='w-1/3'>
                     <NewJoinees />
                 </div>
@@ -41,6 +42,7 @@ const Home = () => {
             </div>
 
 
+            <Footer />
             {/* <a href="#" class="text-center mx-[45%] text-xs font-normal text-gray-500 hover:underline py-4">
                 SmartConnect Product
             </a> */}
