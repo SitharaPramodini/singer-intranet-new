@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import "flowbite/dist/flowbite.css";
+
+body{
+  background-color: #ecedef;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ecedef;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eb1c24;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c41218;
+}
+
+
+.scrollable {
+  max-height: 36rem; /* Equivalent to max-h-96 */
+  overflow-y: auto;
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+
+
+.gridwidth{
+  min-width: -webkit-fill-available;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.blinking-button {
+  animation: neonGlow 1.5s infinite;
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 5px #eb1c24, 0 0 10px #eb1c24, 0 0 15px #eb1c24, 0 0 20px #eb1c24;
+  }
+  50% {
+    box-shadow: 0 0 10px #eb1c24, 0 0 20px #eb1c24, 0 0 30px #eb1c24, 0 0 40px #eb1c24;
+  }
+  100% {
+    box-shadow: 0 0 5px #eb1c24, 0 0 10px #eb1c24, 0 0 15px #eb1c24, 0 0 20px #eb1c24;
+  }
+}
+
+.thehover:hover {
+  animation: neonGlow 1.5s infinite alternate;
+}
