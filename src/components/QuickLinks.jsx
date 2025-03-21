@@ -37,14 +37,24 @@ const QuickLinks = () => {
           </div>
         </div>
         <div className="flex flex-row gap-4 w-full">
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
+          <div className="relative w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
+            {/* Notification Badge */}
+            <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-200 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
+              5
+            </span>
             <RiCalendarTodoFill className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
             <p className="text-xs mt-2">Appointments</p>
           </div>
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
+
+          <div className="relative w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
+            {/* Notification Badge */}
+            <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-200 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
+              2
+            </span>
             <LuMonitorCheck className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
             <p className="text-xs mt-2">Job Portal</p>
           </div>
+
           <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
             <SlOrganization className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
             <p className="text-xs mt-2">Org Chart</p>

@@ -82,7 +82,7 @@ const EmpOfMonths = () => {
             key={employee.id} 
             className="min-w-full"
           >
-            <div className="flex bg-white rounded-lg overflow-hidden">
+            <div className="flex bg-transparent rounded-lg overflow-hidden">
               {/* Employee Image */}
               <img 
                 src={employee.image} 
@@ -97,7 +97,7 @@ const EmpOfMonths = () => {
                 <p className="text-gray-600">
                   <span className="font-medium">Branch:</span> {employee.branch}
                 </p>
-                <div className="mt-4">
+                <div className="mb-4 mt-2">
                   <span className="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">
                     Star Performer
                   </span>
@@ -120,12 +120,12 @@ const EmpOfMonths = () => {
     </button>
 
     {/* Indicator Dots */} 
-       <div className="flex justify-center space-x-2">
+       <div className="flex justify-center space-x-2 mt-[-1.5rem]">
          {employees.map((_, index) => (
            <button
              key={index}
              onClick={() => setCurrentIndex(index)}
-             className={`h-2 w-2 rounded-full ${
+             className={`h-2 w-2 rounded-full mb-4 ${
                currentIndex === index ? 'bg-red-600' : 'bg-gray-300'
              }`}
            />

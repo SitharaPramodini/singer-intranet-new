@@ -19,7 +19,16 @@ const Home = () => {
                     <Announcement />
                 </div>
 
-                <div className="flex flex-col w-2/3 gap-y-4">
+                <div className='w-1/3'>
+                    <SpecialEvents />
+                </div>
+
+                <div className='flex flex-col w-1/3 gap-y-4'>
+                    <QuickLinks />
+                    <NewJoinees />
+                </div>
+
+                {/* <div className="flex flex-col w-2/3 gap-y-4">
                     <div className='w-1/2 flex flex-row justify-between gap-x-4'>
                         <EmpOfMonths className='w-1/2' />
                         <QuickLinks className='w-1/2' />
@@ -28,10 +37,10 @@ const Home = () => {
                         <SpecialEvents className='w-1/2' />
                         <Documents className='w-1/2' />
                     </div>
-                </div>
+                </div> */}
             </div>
 
-            <div className='flex flex-row w-full px-6 gap-x-4 pb-6'>
+            {/* <div className='flex flex-row w-full px-6 gap-x-4 pb-6'>
                 <div className='w-1/3'>
                     <NewJoinees />
                 </div>
@@ -39,7 +48,7 @@ const Home = () => {
                 <div className="flex flex-col w-2/3 gap-y-4">
                     <Promotions />
                 </div>
-            </div>
+            </div> */}
 
 
             <Footer />

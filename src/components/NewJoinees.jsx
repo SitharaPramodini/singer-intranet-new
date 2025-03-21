@@ -9,7 +9,7 @@ const NewJoinees = () => {
                         <h5 class="text-xl font-normal leading-none text-[#eb1c24] pl-6">New Comers of The Month</h5>
                     </div>
                     <div class="flow-root">
-                                        <ul role="list" class="divide-y divide-gray-200 ">
+                                        <ul role="list" class="divide-y divide-gray-200 pb-4">
                                             <li class="py-3 sm:py-4">
                                                 <div class="flex items-center">
                                                     <div class="shrink-0">
@@ -64,7 +64,24 @@ const NewJoinees = () => {
                                                     </button>
                                                 </div>
                                             </li>
-                                            
+                                            <li class="py-3 sm:py-4">
+                                                <div class="flex items-center">
+                                                    <div class="shrink-0">
+                                                        <img src='emp.jpg' class="w-8 h-8 rounded-full" ></img>
+                                                    </div>
+                                                    <div class="flex-1 min-w-0 ms-4">
+                                                        <p class="text-sm font-medium text-gray-900 truncate ">
+                                                            Sithara Pramodini
+                                                        </p>
+                                                        <p class="text-xs text-gray-500 truncate ">
+                                                            Marketing Department
+                                                        </p>
+                                                    </div>
+                                                    <button className="inline-flex items-center px-4 py-1 bg-red-100 hover:bg-red-600 hover:text-white rounded-full text-red-700 text-xs font-medium transition-colors duration-200">
+                                                        Main branch
+                                                    </button>
+                                                </div>
+                                            </li>
                                         </ul>
                     </div>
                 </div>

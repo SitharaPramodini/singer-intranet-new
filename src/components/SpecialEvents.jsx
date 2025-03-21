@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { GrTrophy } from "react-icons/gr";
-import { LuBaby } from "react-icons/lu";
 import { MdOutlineFestival } from "react-icons/md";
-
-
+import EmpOfMonths from './EmpOfMonths';
+import { IoPricetagsOutline } from "react-icons/io5";
 
 const birthdayList = [
     { name: "Sithara Pramodini", department: "Marketing Department", branch: "Add a Wish" },
@@ -33,7 +32,7 @@ const festGreetingList = [
 const eventData = [
     { id: 1, icon: <LiaBirthdayCakeSolid className="icon text-3xl text-red-600" />, title: "Today Birthdays", count: 6, list: birthdayList },
     { id: 2, icon: <GrTrophy className="icon text-2xl ml-2 text-red-600" />, title: "Work Anniversary", count: 20, list: anniversaryList },
-    { id: 3, icon: <LuBaby className="icon text-2xl ml-2 text-red-600" />, title: "New Born Anniversary", count: 4, list: newBornList },
+    { id: 3, icon: <IoPricetagsOutline className="icon text-2xl ml-2 text-red-600" />, title: "International Day Celebration", count: 4, list: newBornList },
     { id: 4, icon: <MdOutlineFestival className="icon text-2xl ml-2 text-red-600" />, title: "Festival Greetings", count: 2, list: festGreetingList }
 ];
 
@@ -46,9 +45,10 @@ const SpecialEvents = () => {
     };
 
     return (
-        <div className="w-full gridwidth max-w-sm bg-transparent pt-1">
+        <div className="w-full gridwidth max-w-sm bg-transparent ">
             <h5 className="text-xl font-normal leading-none text-[#eb1c24] mb-4">Celebrations</h5>
-            <ul className="space-y-3 relative">
+            <EmpOfMonths />
+            <ul className="space-y-4 relative mt-6">
                 {eventData.map(event => (
                     <li key={event.id} className="relative">
                         <button 
