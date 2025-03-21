@@ -9,61 +9,42 @@ import { SlOrganization } from "react-icons/sl";
 import { GrResources } from "react-icons/gr";
 
 const QuickLinks = () => {
+  const links = [
+    { icon: <IoDocumentAttach className="mx-auto"/>, label: "Documents" },
+    { icon: <GoFileDirectoryFill className="mx-auto"/>, label: "Directory" },
+    { icon: <TbBulbFilled className="mx-auto"/>, label: "Suggestions" },
+    { icon: <GiConversation className="mx-auto"/>, label: "FAQ Center" },
+    { icon: <RiCalendarTodoFill className="mx-auto"/>, label: "Appointments", badge: 5 },
+    { icon: <LuMonitorCheck className="mx-auto"/>, label: "Job Portal", badge: 2 },
+    { icon: <SlOrganization className="mx-auto"/>, label: "Org Chart" },
+    { icon: <GrResources className="mx-auto"/>, label: "Resources" },
+  ];
+
   return (
-    <div className="w-full relative ">
-      {/* <button type="button" className="mb-4 text-white rounded-md bg-[#eb1c24] hover:bg-[#bf3232] w-full py-2 font-medium text-lg transition-colors duration-200 top-0 z-10 shadow-lg">
-                Life at Singer
-            </button> */}
-      <h5 class="text-xl font-normal leading-none mb-4 text-[#eb1c24] w-full">
+    <div className="w-full relative">
+      <h5 className="text-xl font-normal leading-none mb-4 text-[#eb1c24] w-full">
         Quick Links
       </h5>
-      <div className="flex flex-col gap-y-4 ">
-        <div className="flex flex-row gap-4 w-full">
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <IoDocumentAttach className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Documents</p>
-          </div>
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <GoFileDirectoryFill className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Directory</p>
-          </div>{" "}
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <TbBulbFilled className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Suggetions</p>
-          </div>
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <GiConversation className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">FAQ Center</p>
-          </div>
-        </div>
-        <div className="flex flex-row gap-4 w-full">
-          <div className="relative w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            {/* Notification Badge */}
-            <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-200 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
-              5
-            </span>
-            <RiCalendarTodoFill className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Appointments</p>
-          </div>
 
-          <div className="relative w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {links.map((link, index) => (
+          <div
+            key={index}
+            className="relative text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group"
+          >
             {/* Notification Badge */}
-            <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-200 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
-              2
-            </span>
-            <LuMonitorCheck className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Job Portal</p>
-          </div>
+            {link.badge && (
+              <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-200 text-red-600 text-xs font-bold px-2 py-1 rounded-full">
+                {link.badge}
+              </span>
+            )}
 
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <SlOrganization className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Org Chart</p>
+            <div className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white">
+              {link.icon}
+            </div>
+            <p className="text-xs mt-2">{link.label}</p>
           </div>
-          <div className="w-32 text-center bg-white shadow-lg rounded-lg p-4 hover:bg-[#eb1c24] hover:text-white transition-all duration-300 ease-in-out group">
-            <GrResources className="text-red-600 text-4xl mx-auto transition-transform duration-300 ease-[cubic-bezier(0.4, 0, 0.2, 1)] group-hover:rotate-[-15deg] group-hover:scale-125 group-hover:text-white" />
-            <p className="text-xs mt-2">Resources</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
