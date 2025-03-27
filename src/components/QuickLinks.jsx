@@ -21,7 +21,7 @@ const QuickLinks = () => {
   ];
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative md:mt-0 mt-4">
       <h5 className="text-xl font-normal leading-none mb-4 text-[#eb1c24] w-full">
         Quick Links
       </h5>
