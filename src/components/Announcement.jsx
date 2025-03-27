@@ -92,7 +92,7 @@ const Announcement = () => {
                                 <div className='flex justify-between items-center'>
                                     <h3 className="text-md font-semibold mb-2">{announcement.title}</h3>
                                     <button className="px-4 py-[4px] bg-red-100 hover:bg-red-600 hover:text-white rounded-full text-red-700 text-xs font-medium transition-colors duration-200">
-                                        Learn More
+                                        Read More
                                     </button>
                                 </div>
                                 <p className="text-gray-600 text-sm">{announcement.description}</p>
