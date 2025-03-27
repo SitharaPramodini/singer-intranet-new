@@ -63,11 +63,12 @@ const Header = () => {
                             </button></li>
                     <li><a href="#" className="block py-2 text-gray-700 hover:text-red-500">Home</a></li>
                     <li><a href="#" className="block py-2 text-gray-700 hover:text-red-500">Services</a></li>
-                    <li><button type="button" class="py-1 px-4 rounded-full shadow-md hover:shadow-xl bg-[#eb1c24] hover:bg-[#551515] font-medium text-base transition-colors duration-200 z-10">
-                        <a href="#" class="px-4 block md:hover:bg-transparent hover:text-gray-200 md:p-0 text-white">
-                            Singer සත්කාර
-                        </a>
-                    </button></li>
+                    <li><button type="button" class=" px-8 rounded-full shadow-md hover:shadow-xl bg-white bg-[#eb1c24] hover:bg-[#551515] font-medium text-base transition-colors duration-200 z-10">
+                                <a href="#" class="px-4 block md:hover:bg-transparent hover:text-gray-200 md:p-0 text-white">
+                                    {/* Singer සත්කාර */}
+                                    <img className='h-6' src='/Sathkaara.jpeg'></img>
+                                </a>
+                            </button></li>
                     <li>
                         <button type="button" className="blinking-button absolute bottom-4 mx-auto text-[#eb1c24] hover:text-white hover:bg-[#eb1c24] rounded-full bg-white py-1 px-6 font-medium text-lg transition-colors duration-200 z-10">
                 <span className="absolute top-0 right-0 -mt-2 -mr-2 bg-red-600 text-white text-xs font-bold px-4 py-1 rounded-full">3</span>
