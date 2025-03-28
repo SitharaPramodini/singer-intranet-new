@@ -7,35 +7,35 @@ const EmpOfMonths = () => {
       id: 1,
       name: "Sithara Pramodini",
       branch: "Colombo Central",
-      description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+      description: "Recognized for outstanding performance",
       image: "emp.jpg"
     },
     {
       id: 2,
       name: "Sewmini Samarasinghe",
       branch: "Kandy Main",
-      description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+      description: "Recognized for outstanding performance",
       image: "emp.jpg"
     },
     {
       id: 3,
       name: "Sandeepa Sewmini",
       branch: "Galle Branch",
-      description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+      description: "Recognized for outstanding performance",
       image: "emp.jpg"
     },
     {
       id: 4,
       name: "Sanduni Rajapakse",
       branch: "Negombo Branch",
-      description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+      description: "Recognized for outstanding performance",
       image: "emp.jpg"
     },
     {
       id: 5,
       name: "Dinesh Kumar",
       branch: "Jaffna Main",
-      description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+      description: "Recognized for outstanding performance",
       image: "emp.jpg"
     }
   ];
@@ -58,7 +58,7 @@ const EmpOfMonths = () => {
   };
 
   return (
-<div className="relative w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl hover:scale-[101%] transition-all duration-300 ease-in-out">
+<div className="relative h-[9rem] w-full bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-xl hover:scale-[101%] transition-all duration-300 ease-in-out">
 {/* Left Arrow */}
     {/* <h5 class="text-xl font-bold leading-none text-[#eb1c24] px-4 py-3">Employee of The Month</h5> */}
 
@@ -87,18 +87,18 @@ const EmpOfMonths = () => {
               <img 
                 src={employee.image} 
                 alt={employee.name} 
-                className=" w-1/3 object-cover"
+                className=" w-1/3 h-[8.9rem] object-cover"
               />
               
               {/* Employee Details */}
-              <div className="py-6 pl-6  text-left w-2/3">
-                <h3 className="text-lg font-semibold ">{employee.name}</h3>
-                <p className='py-2 pr-6 text-sm'>{employee.description}</p>
+              <div className="py-3 pl-6  text-left w-2/3">
+                <h3 className="text-base font-semibold ">{employee.name}</h3>
+                <p className='py-1 pr-6 text-xs'>{employee.description}</p>
                 <p className="text-gray-600">
-                  <span className="font-medium">Branch:</span> {employee.branch}
+                  <span className="text-sm font-medium">Branch: {employee.branch}</span>
                 </p>
-                <div className="mb-4 mt-2">
-                  <span className="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">
+                <div className="mb-1 mt-2">
+                  <span className="inline-block bg-red-100 text-red-700 py-[2px] px-5 rounded-full text-xs font-medium">
                     Star Performer
                   </span>
                 </div>
@@ -120,12 +120,12 @@ const EmpOfMonths = () => {
     </button>
 
     {/* Indicator Dots */} 
-       <div className="flex justify-center space-x-2 mt-[-1.5rem]">
+       <div className="flex justify-center space-x-[6px] mt-[-16px]">
          {employees.map((_, index) => (
            <button
              key={index}
              onClick={() => setCurrentIndex(index)}
-             className={`h-2 w-2 rounded-full mb-4 ${
+             className={`h-[6px] w-[6px] rounded-full mb-4 ${
                currentIndex === index ? 'bg-red-600' : 'bg-gray-300'
              }`}
            />
@@ -149,35 +149,35 @@ export default EmpOfMonths;
 //       id: 1,
 //       name: "Priya Sharma",
 //       branch: "Colombo Central",
-//       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+//       description: "Recognized for outstanding performance",
 //       image: "emp.jpg"
 //     },
 //     {
 //       id: 2,
 //       name: "Amal Fernando",
 //       branch: "Kandy Main",
-//       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+//       description: "Recognized for outstanding performance",
 //       image: "emp.jpg"
 //     },
 //     {
 //       id: 3,
 //       name: "Nimal Perera",
 //       branch: "Galle Branch",
-//       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+//       description: "Recognized for outstanding performance",
 //       image: "emp.jpg"
 //     },
 //     {
 //       id: 4,
 //       name: "Kumari Jayawardena",
 //       branch: "Negombo Branch",
-//       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+//       description: "Recognized for outstanding performance",
 //       image: "emp.jpg"
 //     },
 //     {
 //       id: 5,
 //       name: "Dinesh Kumar",
 //       branch: "Jaffna Main",
-//       description: "Recognized for outstanding performance, dedication, and teamwork. Keep up the great work!",
+//       description: "Recognized for outstanding performance",
 //       image: "emp.jpg"
 //     }
 //   ];

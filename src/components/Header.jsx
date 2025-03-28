@@ -39,16 +39,16 @@ const Header = () => {
                             <li className="relative group">
     <a href="#" className="block py-2 px-3 font-medium text-base text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent hover:text-gray-200 md:p-0">Services</a>
     <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg opacity-0 transform scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100">
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Documents</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Directory</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Suggestions</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">FAQ center</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Appointments</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Job portal</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Org chart</a></li>
-        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:rou">Resources</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Documents</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Directory</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Suggestions</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">FAQ center</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Appointments</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Job portal</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Org chart</a></li>
+        <li><a href="#" className="block px-4 py-2 text-gray-700 hover:text-red-600 hover:bg-red-200 hover:rounded-lg">Resources</a></li>
     </ul>
-</li>                            <button type="button" class=" px-6 rounded-full shadow-md hover:shadow-xl bg-white bg-[#eb1c24] hover:bg-[#551515] font-medium text-base transition-colors duration-200 z-10">
+</li>                            <button type="button" class=" px-6 rounded-full shadow-md bg-white hover:shadow-xl font-medium text-base transition-colors duration-200 z-10">
                                 <a href="#" class="px-4 block md:hover:bg-transparent hover:text-gray-200 md:p-0 text-white">
                                     {/* Singer සත්කාර */}
                                     <img className='h-6' src='/Sathkaara.jpeg'></img>

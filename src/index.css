@@ -30,7 +30,7 @@ body{
 
 
 .scrollable {
-  max-height: 35.5rem; /* Equivalent to max-h-96 */
+  max-height: 26.5rem; /* Equivalent to max-h-96 */
   overflow-y: auto;
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
   scrollbar-width: none; /* For Firefox */
@@ -84,7 +84,6 @@ body{
   border-radius: 10px;
   filter: drop-shadow(0 5px 10px 0 #ffffff);
   background-color: #ffffff;
-  padding: 20px;
   position: relative;
   z-index: 0;
   overflow: hidden;
