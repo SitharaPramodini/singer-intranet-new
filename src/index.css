@@ -117,3 +117,109 @@ body{
   transition-delay:0.5s ;
 }
 }
+
+
+
+/* directory cards */
+
+.education {
+  --bg-color: #eb1c24;
+  --bg-color-light: #feb7ba;
+  /* --text-color-hover: #4C5656; */
+  --box-shadow-color: #ff464c;
+}
+
+.directory-card {
+  background: #fff;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.directory-card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+}
+
+.directory-card:hover .overlay {
+  transform: scale(4) translateZ(0);
+}
+
+.directory-card:hover .circle {
+  border-color: var(--bg-color-light);
+  background: var(--bg-color);
+}
+
+.directory-card:hover .circle:after {
+  background: var(--bg-color-light);
+}
+
+.directory-card:hover p {
+  color: var(--bg-color);
+  background-color: white;
+}
+
+.directory-card:hover h3 {
+  color: white;
+}
+
+.directory-card:active {
+  transform: scale(1) translateZ(0);
+  box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+    0 15px 24px var(--box-shadow-color);
+}
+
+.directory-card p {
+  font-size: 17px;
+  z-index: 1000;
+  transition: color 0.3s ease-out;
+}
+
+.circle {
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+}
+
+.circle:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background: var(--bg-color);
+  border-radius: 50%;
+  top: 7px;
+  left: 7px;
+  transition: opacity 0.3s ease-out;
+}
+
+.circle svg {
+  z-index: 10000;
+  transform: translateZ(0);
+}
+
+.overlay {
+  width: 100px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  z-index: -1;
+  transition: transform 0.3s ease-out;
+}
