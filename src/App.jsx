@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AdminHeader from "./admin-components/AdminHeader";
 import OrgChart from "./pages/OrgChart";
+import EventLog from "./admin-pages/EventLog";
 
 function App() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
         <Route path="/admin-internationalDays" element={<InternationalDaysAD />} />
         <Route path="/admin-Festivals" element={<FestivalAD />} />
         <Route path="/admin-announcements" element={<AnnouncementsAD />} />
+        <Route path="/admin-eventLog" element={<EventLog />} />
       </Routes>
 
       {!hideLayout && <Footer />}

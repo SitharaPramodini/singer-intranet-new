@@ -238,26 +238,35 @@ exports.getInternationalDays = async (req, res) => {
 
 // Get festivals
 exports.getFestivals = async (req, res) => {
-    try {
-        const query = `
-            SELECT f.festival_ID, f.festival_title AS branch_name, f.greeting AS dep_name, f.added_datetime, f.added_by, f.festival_image AS emp_image, f.emp_ID
-            FROM Festival_greetings f
-            WHERE MONTH(added_datetime) = MONTH(CURDATE()) 
-                  AND DAY(added_datetime) = DAY(CURDATE()) 
-            `;
+  try {
+    const query = `
+      SELECT 
+        f.festival_ID, 
+        f.festival_title AS branch_name, 
+        f.greeting AS dep_name, 
+        f.added_datetime, 
+        f.added_by, 
+        f.festival_image AS emp_image, 
+        f.emp_ID,
+        f.start_date,
+        f.end_date
+      FROM Festival_greetings f
+      WHERE CURDATE() BETWEEN f.start_date AND f.end_date
+    `;
 
-        const [rows] = await db.query(query);
+    const [rows] = await db.query(query);
 
-        if (rows.length === 0) {
-            return res.status(200).json({ message: 'No festival ', festivals: [] });
-        }
-
-        res.status(200).json({ festivals: rows });
-    } catch (err) {
-        console.error('Error fetching festivals', err);
-        res.status(500).json({ error: 'Failed to fetch festivals' });
+    if (rows.length === 0) {
+      return res.status(200).json({ message: 'No active festivals today', festivals: [] });
     }
+
+    res.status(200).json({ festivals: rows });
+  } catch (err) {
+    console.error('Error fetching festivals', err);
+    res.status(500).json({ error: 'Failed to fetch festivals' });
+  }
 };
+
 
 // Get banners
 exports.getBanners = async (req, res) => {
@@ -287,31 +296,4 @@ exports.getBanners = async (req, res) => {
 };
 
 
-// Create event
-exports.addEventLog = async (req, res) => {
-    try {
-        const { category, sub_category, service_ID, emp_ID, event } = req.body;
 
-        // Simple validation
-        if (!category || !event) {
-            return res.status(400).json({ error: 'Category and Event are required' });
-        }
-
-        const query = `
-            INSERT INTO event_log (category, sub_category, service_ID, emp_ID, event_datetime, event)
-            VALUES (?, ?, ?, ?, NOW(), ?)
-        `;
-
-        const values = [category, sub_category, service_ID, emp_ID, event];
-
-        const [result] = await db.query(query, values);
-
-        res.status(201).json({
-            message: 'Event log created successfully',
-            event_ID: result.insertId
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to create event log' });
-    }
-};

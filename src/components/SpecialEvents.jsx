@@ -78,6 +78,7 @@ const SpecialEvents = () => {
                     credentials: 'include'
                 });
                 const festivalData = await festivalDaysRes.json();
+                console.log(festivalData.festivals)
                 if (festivalDaysRes.ok) setFestivalDayList(festivalData.festivals || []);
                 else setFestivalDayList([]);
             } catch (err) {

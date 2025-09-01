@@ -48,26 +48,27 @@ const AdminDashboard = () => {
 
 
 
-      const [selectedItem, setSelectedItem] = useState('dashboard');
+    const [selectedItem, setSelectedItem] = useState('dashboard');
 
-  const sidebarItems = [
-    { id: 'Announcements', icon: Megaphone, label: 'Announcements', count: null, url: 'admin-announcements' },
-    { id: 'Employees', icon: Users, label: 'Employees', count: null },
-    { id: 'Outstanding Performance', icon: Award, label: 'Outstanding Performance', count: null, url:'admin-performance' },
-    { id: 'Users Event Logs', icon: History, label: 'Users Event Logs', count: null },
-    { id: 'International Days', icon: Calendar, label: 'International Days', count: null, url: 'admin-internationalDays' },
-    { id: 'Festivals', icon: Dessert, label: 'Festivals', count: null, url: 'admin-Festivals' },
-    { id: 'Settings', icon: Settings, label: 'Settings', count: null },
-  ];
-
-  const cards = [
-      { icon: <IoDocumentAttach className="mx-auto text-red-600"/>,  value: 'Documents', sub: 'Manage company documents and records' },
-      { icon: <TbBulbFilled className="mx-auto text-red-600"/>, value: 'Suggestions', sub: 'Review and act on staff feedback' },
-      { icon: <GiConversation className="mx-auto text-red-600"/>, value: 'FAQ Center', sub: 'Maintain and update FAQs for employees' },
-      { icon: <RiCalendarTodoFill className="mx-auto text-red-600"/>, value: 'Appointments', sub: 'Organize meetings and schedules'  },
-      { icon: <LuMonitorCheck className="mx-auto text-red-600"/>, value: 'Job Portal', sub: 'Post and manage internal job openings'},
-      { icon: <GrResources className="mx-auto text-red-600"/>, value: 'Resources', sub: 'Provide tools and reference materials' },
+    const sidebarItems = [
+        { id: 'Announcements', icon: Megaphone, label: 'Announcements', count: null, url: 'admin-announcements' },
+        { id: 'Employees', icon: Users, label: 'Employees', count: null, disabled: true },
+        { id: 'Outstanding Performance', icon: Award, label: 'Outstanding Performance', count: null, url: 'admin-performance' },
+        { id: 'Users Event Logs', icon: History, label: 'Users Event Logs', count: null },
+        { id: 'International Days', icon: Calendar, label: 'International Days', count: null, url: 'admin-internationalDays' },
+        { id: 'Festivals', icon: Dessert, label: 'Festivals', count: null, url: 'admin-Festivals' },
+        { id: 'Settings', icon: Settings, label: 'Settings', count: null, disabled: true },
     ];
+
+    const cards = [
+        { icon: <IoDocumentAttach className="mx-auto text-red-600" />, value: 'Documents', sub: 'Manage company documents and records', disabled: true },
+        { icon: <TbBulbFilled className="mx-auto text-red-600" />, value: 'Suggestions', sub: 'Review and act on staff feedback', disabled: true },
+        { icon: <GiConversation className="mx-auto text-red-600" />, value: 'FAQ Center', sub: 'Maintain and update FAQs for employees', disabled: true },
+        { icon: <RiCalendarTodoFill className="mx-auto text-red-600" />, value: 'Appointments', sub: 'Organize meetings and schedules', disabled: true },
+        { icon: <LuMonitorCheck className="mx-auto text-red-600" />, value: 'Job Portal', sub: 'Post and manage internal job openings', disabled: true },
+        { icon: <GrResources className="mx-auto text-red-600" />, value: 'Resources', sub: 'Provide tools and reference materials', disabled: true },
+    ];
+
 
     return (
         <div className="h-screen bg-gray-50">
@@ -82,23 +83,26 @@ const AdminDashboard = () => {
                                 const Icon = item.icon;
                                 return (
                                     <>
-                                    <a
-                                    href={item.url}
-                                        className={`w-full flex items-center justify-between px-4 py-4 rounded-lg text-left transition-colors hover:bg-red-100 bg-white shadow-md`}
-                                    >
-                                        <div className="flex items-center space-x-3">
-                                            <Icon className="h-5 w-5" />
-                                            <span className="font-medium">{item.label}</span>
-                                        </div>
-                                        {item.count && (
-                                            <span className={`text-sm px-2 py-1 rounded-full ${selectedItem === item.id
+                                        <a
+                                            href={item.disabled ? '#' : item.url}
+                                            className={`w-full flex items-center justify-between px-4 py-4 rounded-lg text-left transition-colors
+        hover:bg-red-100 bg-white shadow-md
+        ${item.disabled ? 'pointer-events-none opacity-50' : ''}`}
+                                        >
+                                            <div className="flex items-center space-x-3">
+                                                <Icon className="h-5 w-5" />
+                                                <span className="font-medium">{item.label}</span>
+                                            </div>
+                                            {item.count && (
+                                                <span className={`text-sm px-2 py-1 rounded-full ${selectedItem === item.id
                                                     ? 'bg-red-100 text-red-700'
                                                     : 'bg-gray-100 text-gray-600'
-                                                }`}>
-                                                {item.count}
-                                            </span>
-                                        )}
-                                    </a>
+                                                    }`}>
+                                                    {item.count}
+                                                </span>
+                                            )}
+                                        </a>
+
                                     </>
                                 );
                             })}
@@ -107,27 +111,29 @@ const AdminDashboard = () => {
                 </aside>
 
                 {/* Right Content Area - 2/3 width */}
-<main className="w-full md:w-2/3 px-4 md:px-8 pt-4 overflow-auto">
-  <div className="mb-6">
-    <h2 className="text-2xl font-bold text-gray-800 mb-2">Main Services</h2>
-  </div>
+                <main className="w-full md:w-2/3 px-4 md:px-8 pt-4 overflow-auto">
+                    <div className="mb-6">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-2">Main Services</h2>
+                    </div>
 
-  {/* Responsive Cards Grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {cards.slice(0, 8).map((card, index) => (
-      <div
-        key={index}
-        className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
-      >
-        <div className="inline-flex items-center justify-center text-5xl rounded-lg mb-4">
-          {card.icon}
-        </div>
-        <p className="text-xl font-bold text-gray-900 mb-2">{card.value}</p>
-        <p className="text-xs font-normal text-gray-500">{card.sub}</p>
-      </div>
-    ))}
-  </div>
-</main>
+                    {/* Responsive Cards Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {cards.slice(0, 8).map((card, index) => (
+                            <div
+                                key={index}
+                                className={`bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow
+        ${card.disabled ? 'pointer-events-none opacity-50' : ''}`}
+                            >
+                                <div className="inline-flex items-center justify-center text-5xl rounded-lg mb-4">
+                                    {card.icon}
+                                </div>
+                                <p className="text-xl font-bold text-gray-900 mb-2">{card.value}</p>
+                                <p className="text-xs font-normal text-gray-500">{card.sub}</p>
+                            </div>
+
+                        ))}
+                    </div>
+                </main>
 
             </div>
         </div>

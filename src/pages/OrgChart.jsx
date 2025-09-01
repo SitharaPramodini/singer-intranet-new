@@ -198,19 +198,23 @@ export default function OrgChart() {
     return (
         <div className="bg-gray-50">
             <div className="bg-transparent">
-                <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <div className="flex items-center justify-between">
+                <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                    <div className="flex md:flex-row flex-col items-center justify-between">
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900 flex items-center">
                                 <SlOrganization className="mr-3 text-red-600" size={28} />
                                 Organization Chart
                             </h1>
                             <p className="text-gray-600 mt-1">
+                                Visualizing Our Team Structure and Reporting Lines
+                            </p>
+
+                            <p className="text-gray-600 mt-1">
                                 {/* {searchTerm ? `Search results for "${searchTerm}"` : `Showing ${user?.branch_ID ? 'branch' : 'all'} employees`} */}
                             </p>
                         </div>
                         {/* Search Bar */}
-                        <div className="ml-auto px-4 w-1/3 sm:px-6 lg:px-8 py-6">
+                        <div className="md:ml-auto px-4 md:w-1/3 w-full sm:px-6 lg:px-8 py-6">
                             <div className="relative mx-auto">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <Search className="h-5 w-5 text-gray-400" />

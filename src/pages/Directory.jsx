@@ -131,7 +131,7 @@ const Directory = () => {
             {/* Header */}
             <div className="bg-transparent">
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <div className="flex items-center justify-between">
+                    <div className="flex md:flex-row flex-col items-center justify-between">
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900 flex items-center">
                                 <Users className="mr-3 text-red-600" size={28} />
@@ -142,7 +142,7 @@ const Directory = () => {
                             </p>
                         </div>
                         {/* Search Bar */}
-                        <div className="ml-auto px-4 w-1/3 sm:px-6 lg:px-8 py-6">
+                        <div className="md:ml-auto px-4 md:w-1/3 w-full sm:px-6 lg:px-8 py-6">
                             <div className="relative mx-auto">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <Search className="h-5 w-5 text-gray-400" />

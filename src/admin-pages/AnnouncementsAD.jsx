@@ -3,6 +3,7 @@ import { Plus, Search, Filter, Edit, Trash2, X, Calendar, Tag, User, Image, Aler
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminHeader from '../admin-components/AdminHeader';
+import { MdImageNotSupported } from "react-icons/md";
 
 const AnnouncementManagement = () => {
     const [announcements, setAnnouncements] = useState([]);
@@ -560,7 +561,7 @@ const AnnouncementManagement = () => {
                                                                 />
                                                             </>
                                                         ) : (
-                                                            <p className="h-6 w-6 text-red-600">No Image</p>
+                                                            <p className="text-xl text-center text-red-600"><MdImageNotSupported /></p>
                                                         )}
                                                     </div>
 

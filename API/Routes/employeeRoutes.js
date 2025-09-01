@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const employeeController = require('../Controllers/employeeController');
+const eventLogController = require('../Controllers/AdminControllers/eventLogController');
 const announcementController = require('../Controllers/AdminControllers/AnnouncementController');
 const { isAuthenticated } = require('../Middleware/auth'); 
 
@@ -19,7 +20,7 @@ router.get('/userDetails/:emp_ID', employeeController.getEmployeeDetails);
 router.get('/international-days', employeeController.getInternationalDays);
 router.get('/festivals', employeeController.getFestivals);
 router.get('/banner', employeeController.getBanners);
-router.post('/create-eventLog', employeeController.addEventLog);
+router.post('/create-eventLog', eventLogController.addEventLog);
 
 // Get active announcements (current date is between start_date and end_date)
 router.get("/announcements/active", announcementController.getActiveAnnouncements);

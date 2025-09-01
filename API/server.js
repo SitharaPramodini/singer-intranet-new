@@ -12,6 +12,7 @@ const loginRoutes = require('./Routes/loginRoutes');
 const announcementRoute = require('./Routes/AdminRoutes/announcementRoute');
 const serviceRoute = require('./Routes/AdminRoutes/serviceRoute');
 const directoryRoute = require('./Routes/directoryRoutes');
+const eventLogRoute = require('./Routes/AdminRoutes/eventLogRoute');
 
 // Allow CORS for your frontend
 app.use(cors({
@@ -40,6 +41,7 @@ app.use('/api/admin/festivals', festivalRoutes);
 app.use('/api/admin/announcements', announcementRoute);
 app.use('/api/admin/services', serviceRoute);
 app.use('/api/employees/directory', directoryRoute);
+app.use('/api/admin/eventLog', eventLogRoute);
 
 // Default route
 app.get('/', (req, res) => {

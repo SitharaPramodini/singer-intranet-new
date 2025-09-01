@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Filter, Edit, Trash2, X, Calendar, Globe, FileText, AlertCircle, Image, Building, Users, Heart } from 'lucide-react';
-import AdminHeader from '../admin-components/AdminHeader';
-import { ToastContainer, toast, Bounce } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+// Mock toast functions for demonstration
+const toast = {
+    success: (message) => {
+        console.log('Success:', message);
+        // Replace with actual toast implementation
+    },
+    error: (message) => {
+        console.error('Error:', message);
+        // Replace with actual toast implementation
+    },
+    warning: (message) => {
+        console.warn('Warning:', message);
+        // Replace with actual toast implementation
+    }
+};
 
 export default function FestivalAD() {
     // User session state
@@ -31,7 +44,13 @@ export default function FestivalAD() {
     const [formData, setFormData] = useState({
         festival_title: '',
         greeting: '',
-        festival_image: ''
+        festival_image: '',
+        start_date: '',
+        end_date: '',
+        dep_ID: null,
+        company_ID: null,
+        branch_ID: null,
+        emp_ID: null
     });
 
     // Dropdown data
@@ -51,7 +70,7 @@ export default function FestivalAD() {
             setUserRole(userSession.role);
         } else {
             console.log('No session data found');
-            toast.error({ show: true, message: 'Please login to continue', type: 'error' });
+            toast.error('Please login to continue');
         }
     }, []);
 
@@ -66,7 +85,7 @@ export default function FestivalAD() {
     const fetchFestivalGreetings = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:3000/api/admin/festivals/', {
+            const response = await fetch('http://localhost:3000/api/admin/festivals', { // Fixed endpoint
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -78,11 +97,11 @@ export default function FestivalAD() {
                 setFestivalGreetings(data);
                 setFilteredGreetings(data);
             } else {
-                toast.error('Invalid response format', 'error');
+                toast.error('Invalid response format');
             }
         } catch (error) {
             console.error('Error fetching festival greetings:', error);
-            toast.error('Error fetching festival greetings', 'error');
+            toast.error('Error fetching festival greetings');
         } finally {
             setLoading(false);
         }
@@ -92,8 +111,7 @@ export default function FestivalAD() {
         try {
             const dataToSend = {
                 ...greetingData,
-                added_by: userID,
-                added_datetime: new Date().toISOString()
+                added_by: userID
             };
 
             const response = await fetch('http://localhost:3000/api/admin/festivals', {
@@ -107,16 +125,16 @@ export default function FestivalAD() {
             const data = await response.json();
             console.log(data)
             if (data.message && data.festival_ID) {
-                toast.success('Festival greeting created successfully!', 'success');
+                toast.success('Festival greeting created successfully!');
                 fetchFestivalGreetings();
                 return true;
             } else {
-                toast.error(data.error || 'Failed to create festival greeting', 'error');
+                toast.error(data.error || 'Failed to create festival greeting');
                 return false;
             }
         } catch (error) {
             console.error('Error creating festival greeting:', error);
-            toast.error('Error creating festival greeting', 'error');
+            toast.error('Error creating festival greeting');
             return false;
         }
     };
@@ -132,17 +150,17 @@ export default function FestivalAD() {
                 body: JSON.stringify(greetingData)
             });
             const data = await response.json();
-            if (data.message === 'Festival greeting updated') {
-                toast.success('Festival greeting updated successfully!', 'success');
+            if (data.message === 'Festival greeting updated successfully') { // Fixed message check
+                toast.success('Festival greeting updated successfully!');
                 fetchFestivalGreetings();
                 return true;
             } else {
-                toast.error(data.error || 'Failed to update festival greeting', 'error');
+                toast.error(data.error || 'Failed to update festival greeting');
                 return false;
             }
         } catch (error) {
             console.error('Error updating festival greeting:', error);
-            toast.error('Error updating festival greeting', 'error');
+            toast.error('Error updating festival greeting');
             return false;
         }
     };
@@ -158,15 +176,15 @@ export default function FestivalAD() {
                 credentials: 'include',
             });
             const data = await response.json();
-            if (data.message === 'Festival greeting deleted') {
-                toast.success('Festival greeting deleted successfully!', 'success');
+            if (data.message === 'Festival greeting deleted successfully') { // Fixed message check
+                toast.success('Festival greeting deleted successfully!');
                 fetchFestivalGreetings();
             } else {
-                toast.error(data.error || 'Failed to delete festival greeting', 'error');
+                toast.error(data.error || 'Failed to delete festival greeting');
             }
         } catch (error) {
             console.error('Error deleting festival greeting:', error);
-            toast.error('Error deleting festival greeting', 'error');
+            toast.error('Error deleting festival greeting');
         }
     };
 
@@ -197,8 +215,15 @@ export default function FestivalAD() {
 
     // Handle form submission
     const handleSubmit = async () => {
-        if (!formData.festival_title || !formData.greeting) {
-            toast.warning('Please fill in all required fields', 'error');
+        // Updated validation to include required fields
+        if (!formData.festival_title || !formData.greeting || !formData.start_date || !formData.end_date) {
+            toast.warning('Please fill in all required fields (Festival Title, Greeting, Start Date, End Date)');
+            return;
+        }
+
+        // Validate date range
+        if (new Date(formData.start_date) > new Date(formData.end_date)) {
+            toast.warning('Start date cannot be later than end date');
             return;
         }
 
@@ -226,12 +251,18 @@ export default function FestivalAD() {
                     festival_title: data.festival_title || '',
                     greeting: data.greeting || '',
                     festival_image: data.festival_image || '',
+                    start_date: data.start_date ? data.start_date.split('T')[0] : '',
+                    end_date: data.end_date ? data.end_date.split('T')[0] : '',
+                    dep_ID: data.dep_ID || null,
+                    company_ID: data.company_ID || null,
+                    branch_ID: data.branch_ID || null,
+                    emp_ID: data.emp_ID || null
                 });
                 setShowModal(true);
             }
         } catch (error) {
             console.error('Error fetching greeting details:', error);
-            toast.error('Error fetching greeting details', 'error');
+            toast.error('Error fetching greeting details');
         }
     };
 
@@ -242,7 +273,13 @@ export default function FestivalAD() {
         setFormData({
             festival_title: '',
             greeting: '',
-            festival_image: ''
+            festival_image: '',
+            start_date: '',
+            end_date: '',
+            dep_ID: null,
+            company_ID: null,
+            branch_ID: null,
+            emp_ID: null
         });
     };
 
@@ -260,7 +297,6 @@ export default function FestivalAD() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-
             {/* Main Content */}
             <div className="p-6">
                 <h1 className="text-4xl font-bold text-red-600 mb-6">Festivals</h1>
@@ -327,10 +363,9 @@ export default function FestivalAD() {
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Festival Title</th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Greeting</th>
-                                        {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Branch</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Employee</th> */}
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start Date</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">End Date</th>
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Added Date</th>
                                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                     </tr>
                                 </thead>
@@ -362,15 +397,12 @@ export default function FestivalAD() {
                                                         {greeting.greeting}
                                                     </div>
                                                 </td>
-                                                {/* <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-900">
-                          {getBranchName(greeting.branch_ID)}
-                        </td>
-                        <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-900">
-                          {getDepartmentName(greeting.dep_ID)}
-                        </td>
-                        <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-900">
-                          {getEmployeeName(greeting.emp_ID)}
-                        </td> */}
+                                                <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
+                                                    {greeting.start_date ? new Date(greeting.start_date).toLocaleDateString() : 'N/A'}
+                                                </td>
+                                                <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
+                                                    {greeting.end_date ? new Date(greeting.end_date).toLocaleDateString() : 'N/A'}
+                                                </td>
                                                 <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                                                     {greeting.added_datetime ? new Date(greeting.added_datetime).toLocaleDateString() : 'N/A'}
                                                 </td>
@@ -396,7 +428,7 @@ export default function FestivalAD() {
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="8" className="px-6 py-8 text-center text-gray-500">
+                                            <td colSpan="7" className="px-6 py-8 text-center text-gray-500">
                                                 No festival greetings found
                                             </td>
                                         </tr>
@@ -444,6 +476,40 @@ export default function FestivalAD() {
                                     </div>
                                 </div>
 
+                                {/* Start Date */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Start Date <span className="text-red-500">*</span>
+                                    </label>
+                                    <div className="relative">
+                                        <Calendar className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                                        <input
+                                            type="date"
+                                            value={formData.start_date}
+                                            onChange={(e) => setFormData(prev => ({ ...prev, start_date: e.target.value }))}
+                                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* End Date */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        End Date <span className="text-red-500">*</span>
+                                    </label>
+                                    <div className="relative">
+                                        <Calendar className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                                        <input
+                                            type="date"
+                                            value={formData.end_date}
+                                            onChange={(e) => setFormData(prev => ({ ...prev, end_date: e.target.value }))}
+                                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
                                 {/* Festival Image URL */}
                                 <div className="md:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -472,12 +538,15 @@ export default function FestivalAD() {
                                             value={formData.greeting}
                                             onChange={(e) => setFormData(prev => ({ ...prev, greeting: e.target.value }))}
                                             rows="4"
-                                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:"
+                                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                                            placeholder="Enter your festival greeting message..."
+                                            required
                                         />
                                     </div>
                                 </div>
+                            </div>
 
-                                <div className="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200">
+                            <div className="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200">
                                 <button
                                     onClick={handleCloseModal}
                                     className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
@@ -488,15 +557,13 @@ export default function FestivalAD() {
                                     onClick={handleSubmit}
                                     className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
                                 >
-                                    {editingId ? 'Update Day' : 'Create Day'}
+                                    {editingId ? 'Update Festival' : 'Create Festival'}
                                 </button>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-
         </div>
     );
 }
